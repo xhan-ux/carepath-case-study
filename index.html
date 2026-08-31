@@ -1,152 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CarePath — a UX case study by Chandan M about making public healthcare journeys easier to understand and act on." />
-  <meta name="theme-color" content="#0c666b" />
-  <title>CarePath — UX Case Study · Chandan M</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CarePath — UX case study</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--paper:#F7F4EC;--paper-2:#FFFEFA;--ink:#16241F;--teal:#0E3B36;--teal-2:#12514A;--mint:#E6EFEA;--mint-2:#D9E7E0;--sage:#5F7A70;--sage-2:#88A197;--amber:#C57F1F;--amber-bg:#FBF0DC;--line:#DBE1D8;--line-2:#c9d2c8;--serif:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--max:740px;--wide:1080px}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}a{color:var(--teal-2)}.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}.wide{max-width:var(--wide);margin:0 auto;padding:0 28px}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(247,244,236,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}.topbar-inner{max-width:var(--wide);margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between}.topbar-mark{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-weight:600;font-size:18px;color:var(--teal)}.topbar-mark .dot{width:9px;height:9px;border-radius:3px;background:var(--teal);display:inline-block}.topbar-links{display:flex;gap:22px;font-size:14px}.topbar-links a{color:var(--ink);text-decoration:none;opacity:.7}.topbar-links a:hover{opacity:1}
+  .hero{max-width:var(--wide);margin:0 auto;padding:96px 28px 64px}.hero-label{font-size:14px;color:var(--sage);margin:0 0 22px}.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(44px,8vw,84px);line-height:1.02;margin:0 0 6px;color:var(--teal);letter-spacing:-.01em}.hero .lede{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(24px,3.4vw,34px);line-height:1.28;max-width:16ch;margin:20px 0 30px;color:var(--ink)}.hero p.desc{max-width:56ch;font-size:18px;color:#33453f;margin:0 0 40px}.meta-row{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}.meta-cell{padding:18px 20px 18px 0;border-right:1px solid var(--line-2)}.meta-cell:last-child{border-right:none}.meta-cell .k{font-size:12.5px;color:var(--sage);margin-bottom:6px}.meta-cell .v{font-size:15px;font-weight:600;color:var(--ink);line-height:1.35}.hero-link{display:inline-flex;align-items:center;gap:8px;margin-top:28px;font-size:15px;font-weight:600;color:var(--teal);text-decoration:none;border-bottom:1.5px solid var(--teal-2);padding-bottom:2px}@media(max-width:680px){.meta-row{grid-template-columns:1fr 1fr}.meta-cell{border-bottom:1px solid var(--line-2)}.meta-cell:nth-child(2n){border-right:none}}
+  section{padding:64px 0}section.tight{padding:40px 0}.section-label{font-size:13.5px;color:var(--amber);font-weight:600;margin:0 0 14px}h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4vw,42px);line-height:1.12;margin:0 0 22px;color:var(--teal);letter-spacing:-.01em}h3{font-family:var(--serif);font-weight:500;font-size:24px;margin:0 0 10px;color:var(--teal)}p{margin:0 0 18px}.lead{font-size:19px;color:#2b3a35}.pullquote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(21px,2.6vw,28px);line-height:1.42;color:var(--teal);border-left:3px solid var(--amber);padding:2px 0 2px 26px;margin:32px 0}ul.plain{list-style:none;margin:0;padding:0}ul.plain li{position:relative;padding-left:22px;margin-bottom:14px;color:#2b3a35}ul.plain li::before{content:'–';position:absolute;left:0;color:var(--sage-2)}.principle{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:20px 0;border-top:1px solid var(--line)}.principle:last-child{border-bottom:1px solid var(--line)}.principle .n{font-family:var(--serif);font-style:italic;color:var(--sage-2);font-size:20px}.principle h4{margin:0 0 6px;font-size:17px;font-weight:600;color:var(--ink)}.principle p{margin:0;color:#48594F;font-size:15.5px}
+  .timeline{border-top:1px solid var(--line-2)}.tl-row{display:grid;grid-template-columns:100px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}.tl-row .day{font-family:var(--serif);font-style:italic;color:var(--amber);font-size:17px}.tl-row h4{margin:0 0 6px;font-size:17px;color:var(--ink);font-weight:600}.tl-row p{margin:0;font-size:15px;color:#48594F}
+  .group-head{max-width:var(--max);margin:0 auto 30px;padding:0 28px}.group-head .idx{font-size:13.5px;color:var(--amber);font-weight:600;margin-bottom:8px}.frame-wrap{max-width:var(--wide);margin:0 auto 20px;padding:0 28px}.frame-wrap.small{max-width:520px}.browser-frame{background:var(--paper-2);border:1px solid var(--line-2);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(20,30,25,.04)}.browser-chrome{display:flex;align-items:center;gap:6px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--mint)}.browser-chrome i{width:8px;height:8px;border-radius:50%;background:var(--line-2);display:inline-block}.browser-frame img{display:block;width:100%;height:auto}.cap{max-width:var(--max);margin:16px auto 56px;padding:0 28px;font-size:15px;color:#48594F}.cap b{color:var(--ink);font-weight:600}.screen-pair{display:flex;gap:24px;max-width:var(--wide);margin:0 auto;padding:0 28px 8px;align-items:flex-start;flex-wrap:wrap}.screen-pair .browser-frame{flex:1;min-width:260px}
+  .swatches{display:flex;gap:14px;flex-wrap:wrap;margin:26px 0 34px}.swatch{width:110px}.swatch .chip{height:72px;border-radius:10px;border:1px solid rgba(0,0,0,.06);margin-bottom:8px}.swatch .name{font-size:12.5px;font-weight:600}.swatch .hex{font-size:12px;color:var(--sage)}.type-spec{border:1px solid var(--line-2);border-radius:14px;padding:32px;background:var(--paper-2);margin-bottom:30px}.type-spec .d1{font-family:var(--serif);font-style:italic;font-size:44px;color:var(--teal);margin-bottom:4px}.type-spec .d2{font-family:var(--sans);font-weight:600;font-size:15px;color:var(--ink);margin-bottom:14px}.type-spec .d3{font-size:15.5px;color:#48594F;max-width:52ch}
+  .callout{background:var(--amber-bg);border:1px solid #E8CE9C;border-radius:14px;padding:28px 30px;margin:8px 0 10px}.callout h3{color:#8A5B10;font-size:19px;margin-bottom:14px}.callout-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.callout-grid .k{font-size:13px;font-weight:700;letter-spacing:.02em;color:#8A5B10;margin-bottom:10px}.callout-grid ul{margin:0;padding-left:18px;font-size:14.5px;color:#5b4620}.callout-grid li{margin-bottom:8px}@media(max-width:600px){.callout-grid{grid-template-columns:1fr}}
+  .priority-row{display:grid;grid-template-columns:52px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line)}.priority-row:last-child{border-bottom:1px solid var(--line)}.priority-tag{font-size:11.5px;font-weight:700;color:var(--teal);background:var(--mint);border-radius:6px;padding:4px 0;text-align:center;height:22px;align-self:start}.priority-row p{margin:0;font-size:15.5px;color:#2b3a35}.priority-row .why{font-size:13.5px;color:var(--sage);margin-top:4px}
+  .reflect{background:var(--teal);color:var(--mint);border-radius:20px;padding:56px 48px;max-width:var(--wide);margin:0 auto}.reflect .wrap{max-width:640px;margin:0;padding:0}.reflect h2{color:#fff}.reflect p{color:#D7E6DF;font-size:17.5px}.reflect .sign{color:#fff;font-family:var(--serif);font-style:italic;font-size:19px;margin-top:8px}footer{padding:70px 0 90px;text-align:center}footer .mark{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--teal);margin-bottom:10px}footer p{color:var(--sage);font-size:14.5px;max-width:44ch;margin:0 auto 22px}footer a.btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;text-decoration:none;padding:13px 26px;border-radius:999px;font-size:14.5px;font-weight:600}.fadein{opacity:0;transform:translateY(10px);animation:fade .7s ease forwards}@keyframes fade{to{opacity:1;transform:none}}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="#top">CarePath<span>+</span></a>
-    <nav>
-      <a href="#problem">Problem</a>
-      <a href="#journey">Journey</a>
-      <a href="#system">System</a>
-      <a href="#reflection">Reflection</a>
-    </nav>
-    <a class="header-cta" href="https://carepath-healthcare-journey.onrender.com/" target="_blank" rel="noreferrer">View prototype ↗</a>
-  </header>
-
-  <main id="top">
-    <section class="hero reveal">
-      <div class="hero-kicker"><span>CASE STUDY 05</span><span>UX / SERVICE DESIGN / HACKATHON</span></div>
-      <div class="hero-grid">
-        <div>
-          <p class="eyebrow">CAREPATH</p>
-          <h1>Making public services<br><em>easier to navigate.</em></h1>
-          <p class="hero-copy">A service-navigation concept that helps people understand what to do, where to go, and what happens next — without having to understand the system first.</p>
-          <div class="meta-row">
-            <div><span>ROLE</span><strong>UX / Product Designer</strong></div>
-            <div><span>TYPE</span><strong>Hackathon project</strong></div>
-            <div><span>STATUS</span><strong>Working prototype</strong></div>
-          </div>
-        </div>
-        <div class="hero-card" aria-label="CarePath journey overview">
-          <div class="card-label">THE JOURNEY</div>
-          <div class="journey-visual">
-            <div class="node active">START</div><i></i><div class="node">UNDERSTAND</div><i></i><div class="node">DO</div>
-            <i></i><div class="node">NOW</div><i></i><div class="node">NEXT</div><i></i><div class="node">DONE</div>
-          </div>
-          <div class="hero-card-note">From “I need help” to a clear next action.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section split reveal" id="problem">
-      <div class="section-index">01</div>
-      <div class="section-content">
-        <p class="eyebrow">THE PROBLEM</p>
-        <h2>People shouldn't need to understand the system <em>before</em> the system helps them.</em></h2>
-        <p>Public services can involve unfamiliar terminology, multiple steps, different offices, forms, queues, and uncertainty about what happens next. The challenge was to turn that complexity into a journey people can actually follow.</p>
-        <div class="insight">“The real problem isn't always finding a service. It's knowing what to do next.”</div>
-      </div>
-    </section>
-
-    <section class="section reveal" id="journey">
-      <div class="section-index">02</div>
-      <div class="section-content wide">
-        <p class="eyebrow">THE CORE IDEA</p>
-        <div class="big-statement">One journey.<br><em>Clear next steps.</em></div>
-        <div class="journey-line">
-          <article><b>01</b><span>START</span><p>Tell CarePath what you need.</p></article>
-          <article><b>02</b><span>UNDERSTAND</span><p>See the service and requirements in plain language.</p></article>
-          <article><b>03</b><span>DO</span><p>Complete the action with guidance.</p></article>
-          <article><b>04</b><span>NOW</span><p>Know the current status.</p></article>
-          <article><b>05</b><span>NEXT</span><p>Understand what happens after this step.</p></article>
-          <article><b>06</b><span>DONE</span><p>Finish with a clear outcome.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dark reveal" id="system">
-      <div class="section-index">03</div>
-      <div class="section-content">
-        <p class="eyebrow">DESIGNING THE SYSTEM</p>
-        <h2>Not another government portal.<br><em>A layer that makes the journey legible.</em></h2>
-        <div class="system-grid">
-          <div class="system-copy">
-            <p>CarePath is designed around the user's journey rather than the organisation's internal structure.</p>
-            <div class="principles">
-              <div><span>01</span><strong>Journey over departments</strong><p>Organise information around what the person is trying to accomplish.</p></div>
-              <div><span>02</span><strong>Progress over ambiguity</strong><p>Always make the current step and next action visible.</p></div>
-              <div><span>03</span><strong>Access over assumptions</strong><p>Consider different devices, connectivity, language, and assisted access.</p></div>
-            </div>
-          </div>
-          <div class="system-diagram">
-            <div class="layer top">CAREPATH<br><small>JOURNEY LAYER</small></div>
-            <div class="connector">↓</div>
-            <div class="layer">SERVICE INFORMATION</div>
-            <div class="connector">↓</div>
-            <div class="layer muted">EXISTING PUBLIC SERVICES</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal">
-      <div class="section-index">04</div>
-      <div class="section-content wide">
-        <p class="eyebrow">THE EXPERIENCE</p>
-        <h2>Designed around moments of uncertainty.</h2>
-        <div class="screen-grid">
-          <article class="screen-card large"><div class="fake-screen"><div class="fake-top">CarePath <span>EN</span></div><div class="fake-body"><small>WHAT DO YOU NEED?</small><h3>Find the right<br>public service.</h3><div class="fake-input">Describe what you need <b>→</b></div><div class="fake-pills"><i></i><i></i><i></i></div></div></div><div class="caption"><b>01</b><span>Start with the person's need, not a department name.</span></div></article>
-          <article class="screen-card"><div class="fake-screen light"><div class="fake-top">Your journey</div><div class="steps"><span class="done"></span><span class="done"></span><span class="current"></span><span></span><span></span></div><div class="fake-body"><small>NOW</small><h3>Complete your<br>application.</h3><div class="fake-button">Continue →</div></div></div><div class="caption"><b>02</b><span>Make the current action unmistakable.</span></div></article>
-          <article class="screen-card"><div class="fake-screen light"><div class="fake-top">CarePath</div><div class="fake-body"><small>NEXT</small><h3>What happens<br>after this?</h3><div class="fake-list"><span>✓ Submitted</span><span>○ Review</span><span>○ Decision</span></div></div></div><div class="caption"><b>03</b><span>Reduce uncertainty by showing what comes next.</span></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section quote reveal">
-      <div class="section-index">05</div>
-      <div class="section-content">
-        <p class="eyebrow">ACCESSIBILITY</p>
-        <h2>Good service design has to work for the person who has the <em>fewest options.</em></h2>
-        <div class="access-list">
-          <div><span>01</span><p>Clear typography and readable information hierarchy.</p></div>
-          <div><span>02</span><p>Short, unobtrusive interactions instead of interface noise.</p></div>
-          <div><span>03</span><p>Consideration for lower-connectivity and assisted-access contexts.</p></div>
-          <div><span>04</span><p>Language and accessibility controls are part of the experience, not an afterthought.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reflection reveal" id="reflection">
-      <div class="section-index">06</div>
-      <div class="section-content">
-        <p class="eyebrow">REFLECTION</p>
-        <h2>The interface is only one part of the solution.</h2>
-        <p>The strongest outcome of CarePath was reframing the problem from “How do we build another service portal?” to “How do we make a complicated service journey understandable?”</p>
-        <p>That shift changed the structure of the product: progress became a first-class element, the next step became explicit, and accessibility became part of the core journey rather than a finishing layer.</p>
-        <div class="closing-note">Designing for clarity means designing for the moment when someone doesn't know what to do next.</div>
-      </div>
-    </section>
-
-    <section class="final-cta reveal">
-      <p class="eyebrow">WORKING PROTOTYPE</p>
-      <h2>See CarePath in action.</h2>
-      <p>Explore the working prototype and the journey interactions behind the case study.</p>
-      <a class="primary-cta" href="https://carepath-healthcare-journey.onrender.com/" target="_blank" rel="noreferrer">Open CarePath prototype ↗</a>
-      <a class="back-link" href="https://chandanm.framer.website" target="_blank" rel="noreferrer">Back to portfolio ↗</a>
-    </section>
-  </main>
-
-  <footer><span>CHANDAN M · PRODUCT / UI DESIGNER</span><span>CAREPATH · 2026</span></footer>
-  <script src="script.js"></script>
+<header class="topbar"><div class="topbar-inner"><div class="topbar-mark"><span class="dot"></span>CarePath</div><nav class="topbar-links"><a href="#problem">Problem</a><a href="#process">Process</a><a href="#walkthrough">Walkthrough</a><a href="#system">System</a><a href="#reflection">Reflection</a></nav></div></header>
+<section class="hero"><div class="hero-label">CASE STUDY · SERVICE / UX / INTERACTION</div><h1>CarePath</h1><div class="lede">One journey. Any service.</div><p class="desc">A synthetic public-service prototype for making complicated healthcare journeys easier to understand, navigate and act on — without replacing the official government service.</p><div class="meta-row"><div class="meta-cell"><div class="k">ROLE</div><div class="v">UX / Product Designer</div></div><div class="meta-cell"><div class="k">DURATION</div><div class="v">10 days</div></div><div class="meta-cell"><div class="k">FOCUS</div><div class="v">Service navigation</div></div><div class="meta-cell"><div class="k">STATUS</div><div class="v">Working prototype</div></div></div><a class="hero-link" href="https://carepath-healthcare-journey.onrender.com/" target="_blank" rel="noopener">Open the working prototype ↗</a></section>
+<section id="problem"><div class="wrap"><p class="section-label">01 · The problem</p><h2>People shouldn't need to understand the system <i>before</i> the system helps them.</h2><p class="lead">Public-service journeys often span unfamiliar terminology, different offices, forms, queues and uncertain handoffs. The interface problem is not just finding information — it is knowing what to do next.</p><div class="pullquote">“The real problem isn't always finding a service. It's knowing what to do next.”</div><ul class="plain"><li>People can arrive at the wrong place or without the right information.</li><li>Confirmation screens often tell you what you booked, not what you should do now.</li><li>When a queue or room changes, the user has to ask someone to verify the new state.</li><li>The official service may be correct but still difficult to navigate without context.</li></ul></div></section>
+<section id="process"><div class="wrap"><p class="section-label">02 · Process</p><h2>Build the journey before polishing the interface.</h2><p class="lead">I treated the prototype as a service loop rather than a collection of screens: intent → explanation → official handoff → visit → live updates → completion.</p><div class="timeline"><div class="tl-row"><div class="day">Day 01</div><div><h4>Frame the service problem</h4><p>Mapped the public-service journey around moments where people need an answer, a decision or a next action.</p></div></div><div class="tl-row"><div class="day">Day 02</div><div><h4>Define the shared journey model</h4><p>Established one state model that could drive patient and staff experiences instead of designing isolated flows.</p></div></div><div class="tl-row"><div class="day">Day 03</div><div><h4>Prototype the healthcare route</h4><p>Started with the deepest journey: appointment, arrival, registration, queue, consultation and completion.</p></div></div><div class="tl-row"><div class="day">Day 04–06</div><div><h4>Wire the staff side</h4><p>Added registration, doctor, lab and pharmacy workstations so patient updates had a real source of truth.</p></div></div><div class="tl-row"><div class="day">Day 07–08</div><div><h4>Add accessibility and uncertainty states</h4><p>Built readable hierarchy, language/read-aloud controls, room-change messaging and clear current/next states.</p></div></div><div class="tl-row"><div class="day">Day 09–10</div><div><h4>Test the whole loop</h4><p>Ran all four journeys end to end, switched languages both directions, checked back/exit/restart, verified official links.</p></div></div></div></div></section>
+<section id="walkthrough"><div class="wrap"><p class="section-label">Walkthrough</p><h2>Healthcare, the deepest journey</h2><p class="lead">Healthcare is the fully working part of the prototype — booking guidance, a live visit tracker, and the staff side that actually drives it. Four moments from that journey:</p></div>
+<div class="group-head"><p class="idx">01 — Starting from intent</p><h3>What do you need today?</h3><p>No department names. Five plain-language entry points, and a standing reminder that CarePath isn't the hospital — it's the route to it.</p></div><div class="frame-wrap"><div class="browser-frame"><img alt="CarePath homepage asking what the user needs today, with five intent-based options" src="assets/01-home.png"/></div></div><div class="cap">The same pattern one level up: <b>one journey, any service</b> — healthcare, pension, certificates and grievances all sit behind the same “start with what you need” front door.</div><div class="frame-wrap"><div class="browser-frame"><img alt="CarePath overview page showing four public services: healthcare, pension, certificates, grievances" src="assets/02-overview.png"/></div></div>
+<div class="group-head"><p class="idx">02 — Booking, without teaching ORS first</p><h3>Two questions, then a real handoff</h3><p>Someone without an appointment doesn't need an account or a login to get oriented — just two questions before CarePath explains the government booking flow in plain language and hands off to the real service.</p></div><div class="frame-wrap"><div class="browser-frame"><img alt="Two quick questions: do you already have an appointment, and which city or area" src="assets/03-questions.png"/></div></div><div class="cap">The follow-through matters as much as the explanation: a numbered guide to the official Online Registration System, with an explicit “you are leaving CarePath” notice before the handoff — never a fake booking form pretending to be the real thing.</div><div class="frame-wrap"><div class="browser-frame"><img alt="Step by step guide to the official appointment service, ending in a real handoff link" src="assets/04-official-guide.png"/></div></div>
+<div class="group-head"><p class="idx">03 — One next step, live, for the whole visit</p><h3>From confirmation to “go to Room 204”</h3><p>This is the core loop: a single journey view that updates in place as the visit progresses, instead of a static confirmation the user has to reinterpret each time.</p></div><div class="screen-pair"><div class="browser-frame small"><img alt="Appointment confirmed screen, step 1 of 8, next action is arrive at the hospital" src="assets/05-appointment.png"/></div><div class="browser-frame small"><img alt="Registration complete screen, step 3 of 8, waiting for turn in the queue" src="assets/06-registration.png"/></div><div class="browser-frame small"><img alt="Same screen with a toast notifying the consultation room changed" src="assets/07-room-change.png"/></div><div class="browser-frame small"><img alt="Called screen, step 4 of 8, instructing the patient to go to room 204 now" src="assets/08-called.png"/></div></div><div class="cap"><strong>Actual prototype states — </strong>Four states of one screen, not four screens: appointment confirmed → checked in and waiting → a room change surfaced as a toast the moment it happens → called. The “What changed” log underneath every state exists so a person can trust the current instruction without needing to ask a human to confirm it.</div><div class="frame-wrap"><div class="browser-frame"><img alt="Find your visit screen with patient and staff tabs, mobile number and appointment ID lookup" src="assets/09-find-visit.png"/></div></div><div class="cap">For a visit that's already booked, one lookup — mobile number plus appointment ID — opens straight into the current step, no account needed.</div>
+<div class="group-head"><p class="idx">04 — The other half of the loop</p><h3>Staff side: the same journey, from the desk</h3><p>The patient's “your turn” isn't magic — it's a staff member at Registration, Doctor, Lab or Pharmacy pressing a real action. Building this side first is what made the patient side honest.</p></div><div class="frame-wrap"><div class="browser-frame"><img alt="Staff dashboard with workstations for registration, doctor, lab and pharmacy, and a live queue" src="assets/10-staff-dashboard.png"/></div></div><div class="cap">One shared state, four workstations. Marking a patient arrived on this screen is the same event that moves their journey view forward on the patient's phone.</div></section>
+<section class="tight" id="system"><div class="wrap"><p class="section-label">Design system snapshot</p><h2>Quiet, trustworthy, plain-spoken</h2><p>Deep teal for anything trustworthy or actionable, soft mint for information at rest, warm off-white underneath everything. Amber is reserved for one job — telling you something just changed.</p><div class="swatches"><div class="swatch"><div class="chip" style="background:#0E3B36"></div><div class="name">Deep teal</div><div class="hex">Actions, trust</div></div><div class="swatch"><div class="chip" style="background:#E6EFEA"></div><div class="name">Soft mint</div><div class="hex">Surfaces at rest</div></div><div class="swatch"><div class="chip" style="background:#F7F4EC"></div><div class="name">Warm off-white</div><div class="hex">Base canvas</div></div><div class="swatch"><div class="chip" style="background:#C57F1F"></div><div class="name">Amber</div><div class="hex">“Something changed”</div></div><div class="swatch"><div class="chip" style="background:#16241F"></div><div class="name">Ink</div><div class="hex">Body text</div></div></div><div class="type-spec"><div class="d1">Go to Room 204.</div><div class="d2">Fraunces, medium italic — every headline is written as the one sentence that matters right now.</div><div class="d3">Body and UI copy sit in Inter at a plain, readable size, so the serif headline stays the only voice doing any performing. Cards are rounded and lightly bordered rather than shadowed; every primary action is a full-width teal bar so there's never a guess about what to press next.</div></div></div></section>
+<section class="tight"><div class="wrap"><p class="section-label">Honesty check</p><div class="callout"><h3>What's really working vs. what's simulated</h3><div class="callout-grid"><div><div class="k">FUNCTIONAL IN THIS PROTOTYPE</div><ul><li>Every screen shown here is a real, navigable state — no dummy buttons or dead-end cards.</li><li>Journey step, queue position and room all update from one shared state, live.</li><li>Staff actions and the patient's view are wired to the same data.</li><li>Accessibility, read-aloud and language controls are present on every screen.</li></ul></div><div><div class="k">STILL SYNTHETIC / OUT OF SCOPE</div><ul><li>ORS is a real external app; CarePath explains it but doesn't submit bookings there.</li><li>Patients, tokens and hospital data are synthetic demo records.</li><li>No SMS/USSD/IVR infrastructure — the keypad flow is a concept, not a live channel.</li><li>Translations are directional and need native-speaker review before real use.</li></ul></div></div></div></div></section>
+<section><div class="wrap"><p class="section-label">If I kept going</p><h2>Next steps</h2><div class="priority-row"><div class="priority-tag">P0</div><div><p>Usability-test all four journeys.</p><div class="why">To find out whether people actually understand the next action, not just whether I do.</div></div></div><div class="priority-row"><div class="priority-tag">P0</div><div><p>Audit every interactive element again, at scale.</p><div class="why">Ten days catches the obvious dead ends, not all of them.</div></div></div><div class="priority-row"><div class="priority-tag">P1</div><div><p>Run real accessibility testing with assistive-tech users.</p><div class="why">Keyboard, screen reader and contrast behavior need people, not just checklists.</div></div></div><div class="priority-row"><div class="priority-tag">P1</div><div><p>Prototype the SMS / USSD / IVR path for real.</p><div class="why">The keypad idea only proves itself once it works without a smartphone in the loop.</div></div></div><div class="priority-row"><div class="priority-tag">P2</div><div><p>Extend the pattern to pension, certificates and grievances at the same depth as healthcare.</p><div class="why">The skeleton is already built to carry them.</div></div></div></div></section>
+<section id="reflection"><div class="reflect"><div class="wrap"><p class="section-label" style="color:#8FB6AA;">Reflection</p><h2>Not “a nicer government form”</h2><p>The decision that shaped everything else was to stop competing with the government system and start reducing the uncertainty around it — before, during and after the transaction.</p><p>That moves the real question from <i>“does this look better than the official portal”</i> to <i>“can someone understand what they need, prepare correctly, reach the right official service, and know what happens next.”</i> The keypad concept pushes that further: a family member or a registration clerk can carry someone through the journey who'd never open the app themselves.</p><p class="sign">— designed, built and tested over 10 days</p></div></div></section>
+<footer><div class="mark">CarePath</div><p>A synthetic public-service prototype demonstrating navigation and interaction design. It does not submit or approve real government applications.</p><a class="btn" href="https://carepath-healthcare-journey.onrender.com/" rel="noopener" target="_blank">View the live prototype ↗</a></footer>
 </body>
 </html>
