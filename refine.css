@@ -1,0 +1,45 @@
+/* Care-study presentation layer: keeps the product UI readable without turning the portfolio into the product itself. */
+.screen.full{max-width:900px;margin-left:auto;margin-right:auto}
+.screen.full .frame{border-radius:18px;box-shadow:0 18px 48px rgba(26,67,67,.09)}
+.screen.full img{max-width:100%;height:auto}
+.screen.desktop{max-width:980px}
+.screen.desktop .frame{border-radius:18px}
+.screen.phone-row{max-width:820px;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.screen.phone-row .frame{border-radius:18px;box-shadow:0 16px 40px rgba(26,67,67,.09)}
+/* The called-state asset is a portrait UI; present it like a device study, not a hero banner. */
+.screen.full:has(img[src*="09.png"]){max-width:360px}
+.screen.full:has(img[src*="09.png"]) .frame{border-radius:22px}
+/* The shared-architecture screen benefits from a slightly wider canvas. */
+.screen.full:has(img[src*="10.png"]){max-width:980px}
+/* Make image-led sections feel like designed case-study artifacts. */
+.screen{padding:0 8px}
+.caption{max-width:900px;margin:0 auto;color:var(--muted);font-size:11px}
+.story{max-width:1040px}
+.visual-head{max-width:820px}
+@media(max-width:900px){
+  .screen.full{max-width:820px}
+  .screen.desktop{max-width:820px}
+  .screen.phone-row{max-width:680px;gap:16px}
+  .screen.full:has(img[src*="09.png"]){max-width:330px}
+}
+@media(max-width:640px){
+  .nav-in,.wrap{padding-left:18px;padding-right:18px}
+  .hero{padding:64px 0 72px}
+  .hero h1{font-size:clamp(56px,18vw,92px)}
+  .hero .intro{font-size:17px;line-height:1.55}
+  .meta{grid-template-columns:1fr}
+  .meta div,.meta div:not(:first-child){padding:14px 0;border-right:0;border-bottom:1px solid var(--line)}
+  .meta div:last-child{border-bottom:0}
+  .screen{padding:0 2px;margin-bottom:72px}
+  .screen.full{max-width:100%}
+  .screen.full:has(img[src*="09.png"]){max-width:310px}
+  .screen.full:has(img[src*="10.png"]){max-width:100%}
+  .screen.phone-row{grid-template-columns:1fr;max-width:310px;gap:28px}
+  .screen.phone-row .frame{max-width:310px;margin:auto}
+  .caption{padding:10px 2px;font-size:10px}
+  .story{margin-bottom:68px}
+  .story h3{font-size:31px}
+  .section-title{font-size:clamp(42px,12vw,56px)}
+  section{padding:76px 0}
+}
+@media(prefers-reduced-motion:reduce){.frame{transition:none}}
