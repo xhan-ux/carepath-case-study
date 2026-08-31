@@ -1,4 +1,10 @@
 (() => {
+  // Load the case-study presentation layer after the base product-inspired styles.
+  const presentation = document.createElement('link');
+  presentation.rel = 'stylesheet';
+  presentation.href = 'refine.css?v=2';
+  document.head.appendChild(presentation);
+
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const root = document.documentElement;
 
