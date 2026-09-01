@@ -8,7 +8,7 @@
   // Final mobile overrides load last so the legacy three-line menu rules cannot win.
   const mobileFixes = document.createElement('link');
   mobileFixes.rel = 'stylesheet';
-  mobileFixes.href = 'mobile-fixes.css?v=2';
+  mobileFixes.href = 'mobile-fixes.css?v=3';
   document.head.appendChild(mobileFixes);
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -60,6 +60,17 @@
   const menuToggle = document.querySelector('.menu-toggle');
   const mobileMenu = document.querySelector('.mobile-menu');
   const mobileLinks = [...document.querySelectorAll('.mobile-menu a')];
+
+  // The menu must live directly under <body> while open. A fixed element nested inside
+  // a sticky/backdrop-filter header can otherwise use that header as its containing block,
+  // which makes it jump to the document's top after the page has been scrolled.
+  const menuHome = mobileMenu?.parentElement;
+  const menuPlaceholder = mobileMenu ? document.createComment('mobile-menu-position') : null;
+  if (mobileMenu && menuPlaceholder && menuHome) {
+    menuHome.insertBefore(menuPlaceholder, mobileMenu);
+    document.body.appendChild(mobileMenu);
+  }
+
   const closeMenu = () => {
     if (!menuToggle || !mobileMenu) return;
     menuToggle.setAttribute('aria-expanded', 'false');
