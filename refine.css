@@ -14,8 +14,8 @@
 .story{max-width:1040px}
 .visual-head{max-width:820px}
 
-/* Prevent wide case-study artifacts from ever creating horizontal scroll. */
-html,body{max-width:100%;overflow-x:hidden}
+/* Prevent wide case-study artifacts from ever creating horizontal scroll without creating a new vertical scroll container. */
+html,body{max-width:100%;overflow-x:clip}
 main,.nav,footer,section,.wrap,.nav-in{min-width:0}
 figure,.screen,.story,.problem-grid,.process-grid,.system-grid{min-width:0}
 img{max-width:100%;height:auto}
@@ -23,7 +23,7 @@ img{max-width:100%;height:auto}
 
 /* Mobile navigation: compact overlay instead of pushing the case study down. */
 @media(max-width:800px){
-  .nav{position:sticky;top:0;z-index:120}
+  .nav{position:sticky;position:-webkit-sticky;top:0;z-index:120}
   .nav-in{gap:14px}
   .navlinks{display:none}
   .menu-toggle{
