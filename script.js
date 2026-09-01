@@ -2,8 +2,14 @@
   // Load the small presentation layer after the base styles.
   const presentation = document.createElement('link');
   presentation.rel = 'stylesheet';
-  presentation.href = 'refine.css?v=3';
+  presentation.href = 'refine.css?v=4';
   document.head.appendChild(presentation);
+
+  // Final mobile overrides load last so the legacy three-line menu rules cannot win.
+  const mobileFixes = document.createElement('link');
+  mobileFixes.rel = 'stylesheet';
+  mobileFixes.href = 'mobile-fixes.css?v=1';
+  document.head.appendChild(mobileFixes);
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const root = document.documentElement;
