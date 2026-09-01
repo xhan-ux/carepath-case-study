@@ -8,7 +8,7 @@
   // Final mobile overrides load last so the legacy three-line menu rules cannot win.
   const mobileFixes = document.createElement('link');
   mobileFixes.rel = 'stylesheet';
-  mobileFixes.href = 'mobile-fixes.css?v=3';
+  mobileFixes.href = 'mobile-fixes.css?v=4';
   document.head.appendChild(mobileFixes);
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -56,18 +56,14 @@
   lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
   lightbox.querySelector('.close').addEventListener('click', closeLightbox);
 
-  // Responsive navigation: desktop links collapse into a keyboard-friendly mobile menu.
+  // Responsive navigation.
   const menuToggle = document.querySelector('.menu-toggle');
   const mobileMenu = document.querySelector('.mobile-menu');
   const mobileLinks = [...document.querySelectorAll('.mobile-menu a')];
 
-  // The menu must live directly under <body> while open. A fixed element nested inside
-  // a sticky/backdrop-filter header can otherwise use that header as its containing block,
-  // which makes it jump to the document's top after the page has been scrolled.
-  const menuHome = mobileMenu?.parentElement;
-  const menuPlaceholder = mobileMenu ? document.createComment('mobile-menu-position') : null;
-  if (mobileMenu && menuPlaceholder && menuHome) {
-    menuHome.insertBefore(menuPlaceholder, mobileMenu);
+  // Move the mobile menu out of the sticky/backdrop-filter header. This prevents
+  // fixed-position containing-block bugs on iOS/Android after the page is scrolled.
+  if (mobileMenu && mobileMenu.parentElement !== document.body) {
     document.body.appendChild(mobileMenu);
   }
 
@@ -79,6 +75,7 @@
     mobileMenu.classList.remove('open');
     document.body.classList.remove('menu-open');
   };
+
   const openMenu = () => {
     if (!menuToggle || !mobileMenu) return;
     menuToggle.setAttribute('aria-expanded', 'true');
@@ -87,14 +84,46 @@
     mobileMenu.classList.add('open');
     document.body.classList.add('menu-open');
   };
+
   if (menuToggle && mobileMenu) {
     menuToggle.addEventListener('click', () => {
       menuToggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
     });
-    mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+    // Close FIRST, then perform the anchor scroll. This prevents the menu from
+    // becoming an orphaned overlay while the page moves to the selected section.
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', event => {
+        const href = link.getAttribute('href');
+        if (!href || !href.startsWith('#')) {
+          closeMenu();
+          return;
+        }
+
+        const target = document.querySelector(href);
+        if (!target) {
+          closeMenu();
+          return;
+        }
+
+        event.preventDefault();
+        closeMenu();
+
+        // Update the URL without triggering a page reload, then scroll after the
+        // menu has fully left the viewport.
+        history.pushState(null, '', href);
+        requestAnimationFrame(() => {
+          target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        });
+      });
+    });
+
     window.addEventListener('resize', () => {
       if (window.innerWidth > 800) closeMenu();
     });
+
+    window.addEventListener('hashchange', closeMenu);
+    window.addEventListener('pageshow', closeMenu);
   }
 
   // Keep the desktop and mobile navigation in sync with the section currently in view.
