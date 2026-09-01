@@ -7,7 +7,18 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="nav"><div class="nav-in"><a class="brand" href="#"><span class="brand-mark">+</span>CarePath</a><nav class="navlinks"><a href="#problem">Problem</a><a href="#process">Process</a><a href="#journey">Journey</a><a href="#system">System</a><a href="#reflection">Reflection</a></nav></div></header>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#" aria-label="CarePath home"><span class="brand-mark">+</span>CarePath</a>
+    <nav class="navlinks" aria-label="Case study sections">
+      <a href="#problem">Problem</a><a href="#process">Process</a><a href="#journey">Journey</a><a href="#system">System</a><a href="#reflection">Reflection</a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation"><span></span><span></span><span></span></button>
+  </div>
+  <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile case study navigation" aria-hidden="true">
+    <a href="#problem">01 · Problem</a><a href="#process">02 · Process</a><a href="#journey">03 · Journey</a><a href="#system">04 · System</a><a href="#reflection">05 · Reflection</a>
+  </nav>
+</header>
 <main>
 <section class="hero"><div class="wrap">
 <div class="eyebrow">Case study · Service / UX / Interaction</div>
